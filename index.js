@@ -9,11 +9,15 @@ function handleClick() {
 
   var buttonName = this.innerHTML;
   makeSound(buttonName);
+
+  buttontnactive(buttonName);
 }
 
 // we have added event listener to entire webpage for when we press from keyboard
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
+
+  buttontnactive(event.key);
 });
 
 // create a fn for switch case to avoid repeatation
@@ -52,4 +56,20 @@ function makeSound(key) {
     default:
       console.log(buttonName);
   }
+}
+
+// highlight the button pressed or clicked
+
+function buttontnactive(currentKey) {
+  var activeKey = document.querySelector("." + currentKey);
+
+  // add the class which contains css to highlight the button
+
+  activeKey.classList.add("pressed");
+
+  //remove animation after some sec
+
+  setTimeout(function () {
+    activeKey.classList.remove("pressed");
+  }, 100);
 }
