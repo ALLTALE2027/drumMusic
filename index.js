@@ -2,18 +2,24 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
 }
 
+// mouse click
 function handleClick() {
-  //   var audio = new Audio("sounds/crash.mp3");
-  //   audio.play();
-
   //with "this" we are getting the identity of the button which is clicked
-  //   console.log(this);
-  //   this.innerHTML = "white";
-
-  // this.style.color = "green";
+  //   console.log(this);// this.innerHTML = "white"; // this.style.color = "green";
 
   var buttonName = this.innerHTML;
-  switch (buttonName) {
+  makeSound(buttonName);
+}
+
+// we have added event listener to entire webpage for when we press from keyboard
+document.addEventListener("keydown", function (event) {
+  makeSound(event.key);
+});
+
+// create a fn for switch case to avoid repeatation
+
+function makeSound(key) {
+  switch (key) {
     case "w":
       var crash = new Audio("sounds/crash.mp3");
       crash.play();
